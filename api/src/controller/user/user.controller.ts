@@ -8,7 +8,11 @@ export class UserController {
 
   @Get('/v1/user')
   getAllData() {
-    console.log('success');
+    return this.appService.getHello();
+  }
+
+  @Get('/v1/user/:id')
+  getUserId() {
     return this.appService.getHello();
   }
 }

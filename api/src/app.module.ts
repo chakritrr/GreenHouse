@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserController } from './controller';
 import { DataServicesModule } from './frameworks/data-services/data-services.module';
+import { UserGetIdServiceModule } from './service/user-get-id/user-get-id.module';
 
 @Module({
   imports: [
@@ -12,6 +13,6 @@ import { DataServicesModule } from './frameworks/data-services/data-services.mod
     DataServicesModule,
   ],
   controllers: [AppController, UserController],
-  providers: [AppService],
+  providers: [AppService, UserGetIdServiceModule],
 })
 export class AppModule {}
