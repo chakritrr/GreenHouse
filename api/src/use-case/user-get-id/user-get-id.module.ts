@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
-import { UserGetIdService } from './user-get-id.service';
 import { DataServicesModule } from 'src/frameworks/data-services/data-services.module';
+import { UserGetIdService } from './user-get-id.service';
 
 @Module({
   imports: [DataServicesModule],
