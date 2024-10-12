@@ -8,7 +8,7 @@ export class LoginController {
   constructor(private readonly loginCreateUseCase: LoginCreateUseCase) {}
 
   @Post('/v1/login')
-  async register(@Body() loginRequestDto: LoginRequestDto) {
+  createLogin(@Body() loginRequestDto: LoginRequestDto) {
     return this.loginCreateUseCase.loginCreate(loginRequestDto);
   }
 }

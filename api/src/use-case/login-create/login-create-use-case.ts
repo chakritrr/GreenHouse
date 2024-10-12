@@ -3,14 +3,14 @@ import { JwtService } from '@nestjs/jwt';
 
 import { IUserRepository } from 'src/core';
 import { LoginCreateFactoryService } from './login-create-factory.service';
-import { LoginRequestDto } from 'src/core/dto';
+import { LoginRequestDto, LoginResponseDto } from 'src/core/dto';
 
 @Injectable()
 export class LoginCreateUseCase {
   constructor(
     private readonly jwtService: JwtService,
-    private readonly loginCreateFactoryService: LoginCreateFactoryService,
     private readonly iUserRepository: IUserRepository,
+    private readonly loginCreateFactoryService: LoginCreateFactoryService,
   ) {}
 
   async loginCreate(loginRequestDto: LoginRequestDto) {
@@ -23,6 +23,10 @@ export class LoginCreateUseCase {
     const payload = { email: user.email, sub: user.id };
     const token = this.jwtService.sign(payload);
 
-    return token;
+    const resp: LoginResponseDto = {
+      token: token,
+    };
+
+    return resp;
   }
 }
