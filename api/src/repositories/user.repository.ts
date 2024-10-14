@@ -21,4 +21,8 @@ export class UserRepository implements IUserRepository {
   findOneUserByUsername(username: string): Promise<UserEntity> {
     return this.userEntity.findOneBy({ username: username });
   }
+
+  findAll(): Promise<UserEntity[]>  {
+    return this.userEntity.find()
+  }
 }
