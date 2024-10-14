@@ -11,7 +11,14 @@ export class UserRepository implements IUserRepository {
     private readonly userEntity: Repository<UserEntity>,
   ) {}
 
-  findOneUser(email: string, password: string): Promise<UserEntity> {
-    return this.userEntity.findOneBy({ email, password });
+  findOneUser(username: string, password: string): Promise<UserEntity> {
+    return this.userEntity.findOneBy({
+      username: username,
+      password: password,
+    });
+  }
+
+  findOneUserByUsername(username: string): Promise<UserEntity> {
+    return this.userEntity.findOneBy({ username: username });
   }
 }

@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+
+import { CartEntity, OrderEntity } from '.';
 
 @Entity({ name: 'user' })
 export class UserEntity {
@@ -19,4 +21,19 @@ export class UserEntity {
 
   @Column()
   updateAt: Date;
+
+  @Column({ nullable: true })
+  picture: string;
+
+  @Column({ default: 'user' })
+  role: string;
+
+  @Column({ default: 'Y' })
+  status: string;
+
+  @OneToMany(() => OrderEntity, (orderEntity) => orderEntity.orderedById)
+  orders: OrderEntity[];
+
+  @OneToMany(() => CartEntity, (cartEntity) => cartEntity.orderedById)
+  carts: CartEntity[];
 }

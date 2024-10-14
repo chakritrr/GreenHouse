@@ -1,9 +1,9 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
 import { IUserRepository } from 'src/core';
-import { LoginCreateFactoryService } from './login-create-factory.service';
 import { LoginRequestDto, LoginResponseDto } from 'src/core/dto';
+import { LoginCreateFactoryService } from './login-create-factory.service';
 
 @Injectable()
 export class LoginCreateUseCase {
@@ -14,13 +14,16 @@ export class LoginCreateUseCase {
   ) {}
 
   async loginCreate(loginRequestDto: LoginRequestDto) {
-    const { email, password } = loginRequestDto;
-    const user = await this.iUserRepository.findOneUser(email, password);
-    if (!user) {
-      throw new UnauthorizedException('Invalid email or password');
-    }
+    const { username } = loginRequestDto;
+    const userEntity = await this.iUserRepository.findOneUserByUsername(username);
+    const comparePassword = await this.loginCreateFactoryService.comparePassword(userEntity, loginRequestDto);
 
-    const payload = { email: user.email, sub: user.id };
+    const dataUser = await this.iUserRepository.findOneUser(
+      username,
+      comparePassword,
+    );
+
+    const payload = { email: dataUser.email, sub: dataUser.id };
     const token = this.jwtService.sign(payload);
 
     const resp: LoginResponseDto = {
