@@ -5,6 +5,7 @@ import { TYPE_ORM_CONFIG } from 'src/configulations';
 import {
   CartEntity,
   CategoryEntity,
+  ICategoryRepository,
   ImageEntity,
   IUserRepository,
   OrderEntity,
@@ -13,7 +14,7 @@ import {
   ProductOnOrderEntity,
   UserEntity,
 } from 'src/core';
-import { UserRepository } from 'src/repositories';
+import { CategoryRepository, UserRepository } from 'src/repositories';
 
 @Module({
   imports: [
@@ -34,7 +35,11 @@ import { UserRepository } from 'src/repositories';
       provide: IUserRepository,
       useClass: UserRepository,
     },
+    {
+      provide: ICategoryRepository,
+      useClass: CategoryRepository,
+    },
   ],
-  exports: [IUserRepository],
+  exports: [IUserRepository, ICategoryRepository],
 })
 export class TypeOrmDataServicesModule {}

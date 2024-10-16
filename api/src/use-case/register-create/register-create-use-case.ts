@@ -1,9 +1,9 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 
+import { IUserRepository } from 'src/core';
 import { RegisterRequestDto } from 'src/core/dto';
 import { RegisterCreateFactoryService } from './register-create-factory.service';
-import { IUserRepository } from 'src/core';
 
 @Injectable()
 export class RegisterCreateUseCase {
@@ -16,16 +16,15 @@ export class RegisterCreateUseCase {
   async createRegister(registerRequestDto: RegisterRequestDto) {
     const { username, email } = registerRequestDto
     const users = await this.iUserRepository.findAll();
-    console.log(users)
 
     const isUsernameDuplicate = users.some((user) => user.username === username);
     if (isUsernameDuplicate) {
-      throw new ConflictException('Username already exists');
+      return 'Username already exists';
     }
 
     const isEmailDuplicate = users.some((user) => user.email === email);
     if (isEmailDuplicate) {
-      throw new ConflictException('Email already exists');
+      return 'Email already exists';
     }
 
     const queryRunner = this.dataSource.createQueryRunner();
