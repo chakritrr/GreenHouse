@@ -1,5 +1,5 @@
 import { ProductEntity } from '../entities';
-import { PostProductSortRequestDto } from '../dto';
+import { PostProductSearchRequestDto, PostProductSearchResponseDto, PostProductSortRequestDto } from '../dto';
 
 export abstract class IProductRepository {
   abstract findOneById(id: string): Promise<ProductEntity>;
@@ -7,4 +7,6 @@ export abstract class IProductRepository {
   abstract findProductLimit(count: number): Promise<ProductEntity[]>;
 
   abstract findProductBySort(postProductSortRequestDto: PostProductSortRequestDto): Promise<ProductEntity[]>;
+
+  abstract findProductSearchFilter(postProductSearchRequestDto: PostProductSearchRequestDto): Promise<PostProductSearchResponseDto[]>;
 }

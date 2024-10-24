@@ -12,9 +12,11 @@ import {
 import {
   PatchProductRequestDto,
   PostProductRequestDto,
+  PostProductSearchRequestDto,
   PostProductSortRequestDto,
 } from 'src/core';
 import { JwtAuthGuard } from 'src/frameworks/guards/jwt.auth.guard';
+import { ProductCreateSearchUseCase } from 'src/use-case/product-create-search/product-create-search-use-case';
 import { ProductCreateSortUseCase } from 'src/use-case/product-create-sort/product-create-sort-use-case';
 import { ProductCreateUseCase } from 'src/use-case/product-create/product-create-use-case';
 import { ProductDeleteUseCase } from 'src/use-case/product-delete/product-delete-use-case';
@@ -32,6 +34,7 @@ export class ProductController {
     private readonly productUpdateUseCase: ProductUpdateUseCase,
     private readonly productDeleteUseCase: ProductDeleteUseCase,
     private readonly productCreateSortUseCase: ProductCreateSortUseCase,
+    private readonly productCreateSearchUseCase: ProductCreateSearchUseCase,
   ) {}
 
   @Post('/v1/product')
@@ -75,7 +78,11 @@ export class ProductController {
   }
 
   @Post('/v1/product/search')
-  createProductSearch() {
-    return;
+  createProductSearch(
+    @Body() postProductSearchRequestDto: PostProductSearchRequestDto,
+  ) {
+    return this.productCreateSearchUseCase.createProductSearch(
+      postProductSearchRequestDto,
+    );
   }
 }

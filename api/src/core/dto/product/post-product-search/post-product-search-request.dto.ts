@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString } from 'class-validator';
+import { IsArray, IsOptional, IsString } from 'class-validator';
 
 export class PostProductSearchRequestDto {
   @ApiProperty()
@@ -8,12 +8,12 @@ export class PostProductSearchRequestDto {
   query: string;
 
   @ApiProperty()
-  @IsString()
+  @IsArray()
   @IsOptional()
-  category: string[];
+  category: number[];
 
   @ApiProperty()
-  @IsString()
+  @IsArray()
   @IsOptional()
-  price: string[];
+  price: number[];
 }

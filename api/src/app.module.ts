@@ -19,6 +19,7 @@ import { ProductDeleteUseCaseModule } from './use-case/product-delete/product-de
 import { ProductUpdateUseCaseModule } from './use-case/product-update/product-update-use-case.module';
 import { ProductLimitGetCountUseCaseModule } from './use-case/product-limit-get-count/product-limit-get-count-use-case.module';
 import { ProductCreateSortUseCaseModule } from './use-case/product-create-sort/product-create-sort-use-case.module';
+import { ProductCreateSearchUseCaseModule } from './use-case/product-create-search/product-create-search-use-case.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { ProductCreateSortUseCaseModule } from './use-case/product-create-sort/p
     ProductUpdateUseCaseModule,
     ProductLimitGetCountUseCaseModule,
     ProductCreateSortUseCaseModule,
+    ProductCreateSearchUseCaseModule,
   ],
   controllers: [
     RegisterController,
