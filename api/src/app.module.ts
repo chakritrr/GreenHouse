@@ -6,6 +6,7 @@ import {
   LoginController,
   ProductController,
   RegisterController,
+  UserController,
 } from './controller';
 import { DataServicesModule } from './frameworks/data-services/data-services.module';
 import { CategoryCreateUseCaseModule } from './use-case/category-create/category-create-use-case.module';
@@ -20,6 +21,7 @@ import { ProductUpdateUseCaseModule } from './use-case/product-update/product-up
 import { ProductLimitGetCountUseCaseModule } from './use-case/product-limit-get-count/product-limit-get-count-use-case.module';
 import { ProductCreateSortUseCaseModule } from './use-case/product-create-sort/product-create-sort-use-case.module';
 import { ProductCreateSearchUseCaseModule } from './use-case/product-create-search/product-create-search-use-case.module';
+import { UserGetAllUseCaseModule } from './use-case/user-get-all/user-get-all-use-case.module';
 
 @Module({
   imports: [
@@ -37,12 +39,14 @@ import { ProductCreateSearchUseCaseModule } from './use-case/product-create-sear
     ProductLimitGetCountUseCaseModule,
     ProductCreateSortUseCaseModule,
     ProductCreateSearchUseCaseModule,
+    UserGetAllUseCaseModule,
   ],
   controllers: [
     RegisterController,
     LoginController,
     CategoryController,
     ProductController,
+    UserController,
   ],
 })
 export class AppModule {}

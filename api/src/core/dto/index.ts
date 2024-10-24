@@ -3,7 +3,7 @@ export * from './login/login-response.dto';
 
 export * from './register/register-request.dto';
 
-export * from './user/users/get-users-response.dto';
+export * from './user/get-all-user/get-all-user-response.dto';
 export * from './user/change-status/post-chang-status-request.dto';
 export * from './user/change-status/post-change-status-response.dto';
 export * from './user/change-role/post-change-role-request.dto';

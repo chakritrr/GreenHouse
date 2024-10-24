@@ -23,6 +23,8 @@ export class LoginCreateUseCase {
       comparePassword,
     );
 
+    // ตรง patload อาจจะต้องปรับปรุงโดยการเพิ่มข้อมูล role ไปไว้ทำหรับทำ Guard Role ในอนาคต
+
     const payload = { email: dataUser.email, sub: dataUser.id };
     const token = this.jwtService.sign(payload);
 
