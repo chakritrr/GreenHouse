@@ -10,14 +10,14 @@ import {
 export class UserCreateChangeStatusFactoryService {
   createUserChangeStatus(
     postChangStatusRequestDto: PostChangStatusRequestDto,
-    userById: UserEntity,
+    userEntity: UserEntity,
   ) {
     const { status } = postChangStatusRequestDto;
 
-    userById.status = status;
-    userById.updateAt = new Date();
+    userEntity.status = status;
+    userEntity.updateAt = new Date();
 
-    return userById;
+    return userEntity;
   }
 
   constructResponse(id: string) {

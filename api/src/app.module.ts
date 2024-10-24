@@ -23,6 +23,7 @@ import { ProductCreateSortUseCaseModule } from './use-case/product-create-sort/p
 import { ProductCreateSearchUseCaseModule } from './use-case/product-create-search/product-create-search-use-case.module';
 import { UserGetAllUseCaseModule } from './use-case/user-get-all/user-get-all-use-case.module';
 import { UserCreateChangeStatusUseCaseModule } from './use-case/user-create-change-status/user-create-change-status-use-case.module';
+import { UserCreateChangeRoleUseCaseModule } from './use-case/user-create-change-role/user-create-change-role-use-case.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { UserCreateChangeStatusUseCaseModule } from './use-case/user-create-chan
     ProductCreateSearchUseCaseModule,
     UserGetAllUseCaseModule,
     UserCreateChangeStatusUseCaseModule,
+    UserCreateChangeRoleUseCaseModule,
   ],
   controllers: [
     RegisterController,

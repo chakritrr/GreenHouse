@@ -31,7 +31,9 @@ export class UserCreateChangeStatusUseCase {
       await queryRunner.manager.save(userEntity);
       await queryRunner.commitTransaction();
 
-      return this.userCreateChangeStatusFactoryService.constructResponse(id);
+      return this.userCreateChangeStatusFactoryService.constructResponse(
+        userEntity.id,
+      );
     } catch (err) {
       console.log(err);
       await queryRunner.rollbackTransaction();

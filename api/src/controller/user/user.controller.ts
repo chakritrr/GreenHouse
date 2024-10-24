@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
 
-import { PostChangStatusRequestDto } from 'src/core';
+import { PostChangeRoleRequestDto, PostChangStatusRequestDto } from 'src/core';
+import { UserCreateChangeRoleUseCase } from 'src/use-case/user-create-change-role/user-create-change-role-use-case';
 import { UserCreateChangeStatusUseCase } from 'src/use-case/user-create-change-status/user-create-change-status-use-case';
 import { UserGetAllUseCase } from 'src/use-case/user-get-all/user-get-all-use-case';
 
@@ -9,6 +10,7 @@ export class UserController {
   constructor(
     private readonly userGetAllUseCase: UserGetAllUseCase,
     private readonly userCreateChangeStatusUseCase: UserCreateChangeStatusUseCase,
+    private readonly userCreateChangeRoleUseCase: UserCreateChangeRoleUseCase,
   ) {}
 
   @Get('/v1/users')
@@ -26,8 +28,10 @@ export class UserController {
   }
 
   @Post('/v1/change-role')
-  createChangRole() {
-    return;
+  createChangRole(@Body() postChangRoleRequestDto: PostChangeRoleRequestDto) {
+    return this.userCreateChangeRoleUseCase.createUserChangeRole(
+      postChangRoleRequestDto,
+    );
   }
 
   @Post('/v1/user/cart')
