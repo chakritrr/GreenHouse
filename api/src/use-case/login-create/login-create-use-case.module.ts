@@ -5,6 +5,7 @@ import { LoginCreateFactoryService } from './login-create-factory.service';
 import { LoginCreateUseCase } from './login-create-use-case';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtStrategy } from 'src/frameworks/guards/strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -13,12 +14,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get('JWT_SECRET'),
-        signOptions: { expiresIn: '300s' },
+        signOptions: { expiresIn: '1d' },
       }),
       inject: [ConfigService],
     }),
   ],
-  providers: [LoginCreateUseCase, LoginCreateFactoryService],
+  providers: [LoginCreateUseCase, LoginCreateFactoryService, JwtStrategy],
   exports: [LoginCreateUseCase, LoginCreateFactoryService],
 })
 export class LoginCreateUseCaseModule {}

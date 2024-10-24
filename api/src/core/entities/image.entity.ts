@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { ProductEntity } from './product.entity';
 
@@ -20,9 +20,10 @@ export class ImageEntity {
   secure_url: string;
 
   @ManyToOne(() => ProductEntity, (productEntity) => productEntity.id)
+  @JoinColumn({name: 'productId'})
   productId: ProductEntity;
 
-  @Column()
+  @Column() 
   createdAt: Date;
 
   @Column()

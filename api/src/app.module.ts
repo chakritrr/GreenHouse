@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import {
   CategoryController,
   LoginController,
+  ProductController,
   RegisterController,
 } from './controller';
 import { DataServicesModule } from './frameworks/data-services/data-services.module';
@@ -12,6 +13,12 @@ import { LoginCreateUseCaseModule } from './use-case/login-create/login-create-u
 import { RegisterCreateUseCaseModule } from './use-case/register-create/register-create-use-case.module';
 import { CategoryGetAllUseCaseModule } from './use-case/category-get-all/category-get-all-use-case.module';
 import { CategoryDeleteUseCaseModule } from './use-case/category-delete/category-delete-use-case.module';
+import { ProductCreateUseCaseModule } from './use-case/product-create/product-create-use-case.module';
+import { ProductGetByIdUseCaseModule } from './use-case/product-get-id/product-get-id-use-case.module';
+import { ProductDeleteUseCaseModule } from './use-case/product-delete/product-delete-use-case.module';
+import { ProductUpdateUseCaseModule } from './use-case/product-update/product-update-use-case.module';
+import { ProductLimitGetCountUseCaseModule } from './use-case/product-limit-get-count/product-limit-get-count-use-case.module';
+import { ProductCreateSortUseCaseModule } from './use-case/product-create-sort/product-create-sort-use-case.module';
 
 @Module({
   imports: [
@@ -22,7 +29,18 @@ import { CategoryDeleteUseCaseModule } from './use-case/category-delete/category
     CategoryCreateUseCaseModule,
     CategoryGetAllUseCaseModule,
     CategoryDeleteUseCaseModule,
+    ProductCreateUseCaseModule,
+    ProductGetByIdUseCaseModule,
+    ProductDeleteUseCaseModule,
+    ProductUpdateUseCaseModule,
+    ProductLimitGetCountUseCaseModule,
+    ProductCreateSortUseCaseModule,
   ],
-  controllers: [RegisterController, LoginController, CategoryController],
+  controllers: [
+    RegisterController,
+    LoginController,
+    CategoryController,
+    ProductController,
+  ],
 })
 export class AppModule {}

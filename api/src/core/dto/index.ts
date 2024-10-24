@@ -14,3 +14,15 @@ export * from './category/post-category/post-category-request.dto';
 export * from './category/post-category/post-category-response.dto';
 export * from './category/get-category/get-category-response.dto';
 export * from './category/delete-category/delete-category-response.dto';
+
+export * from './product/post-product/post-product-request.dto';
+export * from './product/post-product/post-product-response.dto';
+export * from './product/get-id-product/get-id-product-response.dto';
+export * from './product/get-id-product-limit/get-id-product-limit-response.dto';
+export * from './product/patch-product/patch-product-response.dto';
+export * from './product/patch-product/patch-product-request.dto';
+export * from './product/delete-product/delete-product-response.dto';
+export * from './product/post-product-sort/post-product-sort-request.dto';
+export * from './product/post-product-sort/post-product-sort-response.dto';
+export * from './product/post-product-search/post-product-search-request.dto';
+export * from './product/post-product-search/post-product-search-response.dto';

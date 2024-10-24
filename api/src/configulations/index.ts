@@ -15,7 +15,7 @@ export const TYPE_ORM_CONFIG = TypeOrmModule.forRootAsync({
       password: cs.get<string>(env.POSTGRES_PASSWORD),
       database: cs.get<string>(env.POSTGRES_DBNAME),
       autoLoadEntities: true,
-      synchronize: false, // ควรตั้งค่าเป็น false ใน production
+      synchronize: true, // ควรตั้งค่าเป็น false ใน production
       entities: ['dist/core/entities/*.entity{.ts,.js}'],
     }) as TypeOrmModuleOptions,
 });

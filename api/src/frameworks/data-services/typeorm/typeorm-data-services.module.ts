@@ -7,6 +7,7 @@ import {
   CategoryEntity,
   ICategoryRepository,
   ImageEntity,
+  IProductRepository,
   IUserRepository,
   OrderEntity,
   ProductEntity,
@@ -14,7 +15,11 @@ import {
   ProductOnOrderEntity,
   UserEntity,
 } from 'src/core';
-import { CategoryRepository, UserRepository } from 'src/repositories';
+import {
+  CategoryRepository,
+  ProductRepository,
+  UserRepository,
+} from 'src/repositories';
 
 @Module({
   imports: [
@@ -39,7 +44,11 @@ import { CategoryRepository, UserRepository } from 'src/repositories';
       provide: ICategoryRepository,
       useClass: CategoryRepository,
     },
+    {
+      provide: IProductRepository,
+      useClass: ProductRepository,
+    },
   ],
-  exports: [IUserRepository, ICategoryRepository],
+  exports: [IUserRepository, ICategoryRepository, IProductRepository],
 })
 export class TypeOrmDataServicesModule {}
