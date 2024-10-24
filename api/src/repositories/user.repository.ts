@@ -22,7 +22,15 @@ export class UserRepository implements IUserRepository {
     return this.userEntity.findOneBy({ username: username });
   }
 
-  findAll(): Promise<UserEntity[]>  {
-    return this.userEntity.find()
+  findAll(): Promise<UserEntity[]> {
+    return this.userEntity.find();
+  }
+
+  findOneById(id: string): Promise<UserEntity> {
+    return this.userEntity.findOne({
+      where: {
+        id: id,
+      },
+    });
   }
 }

@@ -6,4 +6,6 @@ export abstract class IUserRepository {
   abstract findOneUserByUsername(username: string): Promise<UserEntity>;
 
   abstract findAll(): Promise<UserEntity[]>;
+
+  abstract findOneById(id: string): Promise<UserEntity>;
 }

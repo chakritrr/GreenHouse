@@ -1,10 +1,15 @@
-import { Controller, Delete, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
 
+import { PostChangStatusRequestDto } from 'src/core';
+import { UserCreateChangeStatusUseCase } from 'src/use-case/user-create-change-status/user-create-change-status-use-case';
 import { UserGetAllUseCase } from 'src/use-case/user-get-all/user-get-all-use-case';
 
 @Controller()
 export class UserController {
-  constructor(private readonly userGetAllUseCase: UserGetAllUseCase) {}
+  constructor(
+    private readonly userGetAllUseCase: UserGetAllUseCase,
+    private readonly userCreateChangeStatusUseCase: UserCreateChangeStatusUseCase,
+  ) {}
 
   @Get('/v1/users')
   getAllUser() {
@@ -12,8 +17,12 @@ export class UserController {
   }
 
   @Post('/v1/change-status')
-  createChangStatus() {
-    return;
+  createChangStatus(
+    @Body() postChangStatusRequestDto: PostChangStatusRequestDto,
+  ) {
+    return this.userCreateChangeStatusUseCase.createUserChangeStatus(
+      postChangStatusRequestDto,
+    );
   }
 
   @Post('/v1/change-role')
@@ -45,7 +54,7 @@ export class UserController {
   createUserOrder() {
     return;
   }
-  
+
   @Get('/v1/user/order')
   getUserOrder() {
     return;

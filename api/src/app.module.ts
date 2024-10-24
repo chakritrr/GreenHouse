@@ -22,6 +22,7 @@ import { ProductLimitGetCountUseCaseModule } from './use-case/product-limit-get-
 import { ProductCreateSortUseCaseModule } from './use-case/product-create-sort/product-create-sort-use-case.module';
 import { ProductCreateSearchUseCaseModule } from './use-case/product-create-search/product-create-search-use-case.module';
 import { UserGetAllUseCaseModule } from './use-case/user-get-all/user-get-all-use-case.module';
+import { UserCreateChangeStatusUseCaseModule } from './use-case/user-create-change-status/user-create-change-status-use-case.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { UserGetAllUseCaseModule } from './use-case/user-get-all/user-get-all-us
     ProductCreateSortUseCaseModule,
     ProductCreateSearchUseCaseModule,
     UserGetAllUseCaseModule,
+    UserCreateChangeStatusUseCaseModule,
   ],
   controllers: [
     RegisterController,
