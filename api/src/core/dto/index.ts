@@ -8,7 +8,8 @@ export * from './user/change-status/post-chang-status-request.dto';
 export * from './user/change-status/post-change-status-response.dto';
 export * from './user/change-role/post-change-role-request.dto';
 export * from './user/change-role/post-change-role-response.dto';
-export * from './user/cart/post-cart-request.dto';
+export * from './user/post-user-cart/post-user-cart-request.dto';
+export * from './user/post-user-cart/post-user-cart-response.dto';
 
 export * from './category/post-category/post-category-request.dto';
 export * from './category/post-category/post-category-response.dto';

@@ -24,6 +24,7 @@ import { ProductCreateSearchUseCaseModule } from './use-case/product-create-sear
 import { UserGetAllUseCaseModule } from './use-case/user-get-all/user-get-all-use-case.module';
 import { UserCreateChangeStatusUseCaseModule } from './use-case/user-create-change-status/user-create-change-status-use-case.module';
 import { UserCreateChangeRoleUseCaseModule } from './use-case/user-create-change-role/user-create-change-role-use-case.module';
+import { UserCreateCartUseCaseModule } from './use-case/user-create-cart/user-create-cart-use-case.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { UserCreateChangeRoleUseCaseModule } from './use-case/user-create-change
     UserGetAllUseCaseModule,
     UserCreateChangeStatusUseCaseModule,
     UserCreateChangeRoleUseCaseModule,
+    UserCreateCartUseCaseModule,
   ],
   controllers: [
     RegisterController,
